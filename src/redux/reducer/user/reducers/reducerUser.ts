@@ -19,7 +19,7 @@ export const userSlice = createSlice({
     },
     reducerGetUser: (state: Draft<any>, action: PayloadAction<any>) => {
       state.data = action.payload;
-      localStorage.setItem("token", "supersecrettoken_for_user2");
+      localStorage.setItem("token", action.payload.data.token);
     },
     reducerErrors: (state: Draft<any>, action: PayloadAction<any>) => {
       state.error = action.payload;

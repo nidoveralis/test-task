@@ -9,6 +9,7 @@ import './scss/index.scss';
 import AuthPage from "./components/auth/authPage";
 import Page404 from "./components/page404/page404";
 import DataTables from "./components/table/dataTable";
+import PrivateRoute from "./components/privateRoute/privateRoute";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -24,7 +25,7 @@ const detectedBasename = window.location.pathname.startsWith("/react")
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login/*" element={<AuthPage />} />
-        <Route path="/main/*" element={<DataTables />} />
+        <Route path="/main/*" element={<PrivateRoute component={<DataTables />} />} />
         <Route path="/page404/*" element={<Page404 />} />
       </Routes>
     </BrowserRouter>

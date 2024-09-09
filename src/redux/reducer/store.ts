@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import UserStore from "./user/index";
-import DataStore from "./table/index";
+import DataStore from "./data/index";
 
 const store = configureStore({
   reducer: {

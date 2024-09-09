@@ -1,0 +1,128 @@
+.loaderWrapper {
+  width: 100vw;
+  height: 5px;
+}
+
+.errorPopup {
+  position: fixed;
+  top: 20px;
+  background-color: rgba(255, 0, 0, 1);
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -ms-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+}
+
+.errorPopup_active {
+  opacity: 1;
+}
+
+.tableWrapper {
+  width: 100vw;
+  min-width: 1105px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  top: 30px;
+  position: relative;
+
+  p {
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+  }
+
+  span {
+    color: #fff;
+    font-size: 15px
+  }
+
+  .table {
+    border-collapse: collapse;
+    width: calc(100vw - 20px);
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    margin-top: 10px;
+    // position: absolute;
+    // left: 10px;
+
+    &__head {
+      border-radius: 8px;
+      -webkit-border-radius: 8px;
+      -moz-border-radius: 8px;
+      -ms-border-radius: 8px;
+      -o-border-radius: 8px;
+      background-color: azure;
+      position: sticky;
+      height: 40px;
+
+      span {
+        color: #000;
+        font-weight: 500;
+      }
+    }
+
+    tr {
+      border-bottom: 1px solid #fff;
+    }
+
+    &__item {
+      width: 13vw;
+      min-width: 135px;
+      height: 40px;
+      text-align: center;
+
+      input {
+        max-width: 13vw;
+        color: #fff;
+        font-size: 15px;
+        border: none;
+        background-color: transparent;
+        height: 40px;
+        text-align: center;
+        padding: 0;
+      }
+    }
+
+    &__item_small {
+      width: 70px;
+    }
+
+    &__input:focus {
+      outline: none;
+    }
+  }
+}
+
+.table__delete {
+  cursor: pointer;
+}
+
+.addData {
+  background-color: #fff;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  padding: 5px;
+  border: none;
+  align-self: flex-start;
+  height: 40px;
+  width: 120px;
+  margin-left: 20px;
+  cursor: pointer;
+}
