@@ -28,5 +28,3 @@
 3. Запустите проект ```npm run start```
 
 Посмотреть можно [здесь](https://nidoveralis.github.io/test-task)
-
-
