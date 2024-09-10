@@ -4,9 +4,9 @@ import { AppDispatch } from "../../reducer/store";
 
 import { reducerGetData, reducerErrors, reducerFilterData, reducerChangeData } from "../../reducer/data/reducers/reducerData";
 import { getLocalISOString } from "../../../utils/formattedDate";
-import { BASE_URL } from "../../../utils/formattedDate";
 import { IStore } from "../../../types";
 
+const BASE_URL = 'https://test.v5.pryaniky.com';
 const token = localStorage.getItem("token");
 const headers = {
   'x-auth': token,
