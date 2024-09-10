@@ -1,9 +1,10 @@
 import { combineReducers, Reducer, AnyAction } from "@reduxjs/toolkit";
 
 import reducerUser from "./reducers/reducerUser";
+import { IUserData } from "../../../types";
 
 interface CustomerReducers {
-  user: Reducer<any, AnyAction>;
+  user: Reducer<IUserData, AnyAction>;
 }
 
 const UserStore = combineReducers<CustomerReducers>({

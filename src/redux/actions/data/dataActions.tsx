@@ -2,8 +2,9 @@ import axios from "axios";
 
 import { AppDispatch } from "../../reducer/store";
 
-import { reducerGetData, reducerErrors, reducerFilterData } from "../../reducer/data/reducers/reducerData";
+import { reducerGetData, reducerErrors, reducerFilterData, reducerChangeData } from "../../reducer/data/reducers/reducerData";
 import { getLocalISOString } from "../../../utils/formattedDate";
+import { IStore } from "../../../types";
 
 const BASE_URL = 'https://test.v5.pryaniky.com';
 const token = localStorage.getItem("token");
@@ -13,7 +14,7 @@ const headers = {
 };
 
 export const getData = () =>
-  async (dispatch: AppDispatch, getState: () => any) => {
+  async (dispatch: AppDispatch) => {
     const token = localStorage.getItem("token") || '';
     try {
       const response = await axios.get(`${BASE_URL}/ru/data/v3/testmethods/docs/userdocs/get`, {
@@ -31,9 +32,9 @@ export const getData = () =>
   };
 
 export const removeData = (id: string) =>
-  async (dispatch: AppDispatch, getState: () => any) => {
+  async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.get(`${BASE_URL}/ru/data/v3/testmethods/docs/userdocs/delete/${id}`, {
+      const response = await axios.delete(`${BASE_URL}/ru/data/v3/testmethods/docs/userdocs/delete/${id}`, {
         headers,
       });
 
@@ -50,7 +51,7 @@ export const removeData = (id: string) =>
   };
 
 export const createData = () =>
-  async (dispatch: AppDispatch, getState: () => any) => {
+  async (dispatch: AppDispatch) => {
     const dataPayload = {
       companySigDate: getLocalISOString(),
       companySignatureName: "Договор.sig",
@@ -65,7 +66,7 @@ export const createData = () =>
       const response = await axios.post(`${BASE_URL}/ru/data/v3/testmethods/docs/userdocs/create`, dataPayload, {
         headers,
       });
-      return response.data;
+      return response.data.data;
     } catch (error) {
       console.error(error);
       dispatch(reducerErrors(true));
@@ -74,12 +75,14 @@ export const createData = () =>
   };
 
 export const setData = (id: string) =>
-  async (dispatch: AppDispatch, getState: () => any) => {
+  async (dispatch: AppDispatch, getState: () => IStore) => {
+    const store = getState();
+    const values = store.data.data.inputValues;
     try {
-      const response = await axios.get(`${BASE_URL}/ru/data/v3/testmethods/docs/userdocs/set/{id}`, {
+      const response = await axios.post(`${BASE_URL}/ru/data/v3/testmethods/docs/userdocs/set/${id}`, values, {
         headers
       });
-      dispatch(reducerGetData(response.data));
+      dispatch(reducerChangeData(response.data.data));
     } catch (error) {
       console.error(error);
       dispatch(reducerErrors(true));

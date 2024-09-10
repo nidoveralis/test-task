@@ -25,15 +25,16 @@
 }
 
 .tableWrapper {
-  width: 100vw;
-  min-width: 1105px;
-  height: 100vh;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
   top: 30px;
   position: relative;
+  overflow-y: scroll;
+  height: calc(100vh - 53px);
+  overflow-x: hidden;
 
   p {
     color: #fff;
@@ -49,15 +50,15 @@
 
   .table {
     border-collapse: collapse;
-    width: calc(100vw - 20px);
+    width: calc(100vw - 50px);
     border-radius: 8px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
-    margin-top: 10px;
-    // position: absolute;
-    // left: 10px;
+    top: 75px;
+    position: absolute;
+    left: 10px;
 
     &__head {
       border-radius: 8px;
@@ -80,13 +81,12 @@
     }
 
     &__item {
-      width: 13vw;
-      min-width: 135px;
+      max-width: 135px;
       height: 40px;
       text-align: center;
 
       input {
-        max-width: 13vw;
+        width: 100%;
         color: #fff;
         font-size: 15px;
         border: none;
@@ -97,8 +97,33 @@
       }
     }
 
-    &__item_small {
+    &__itemSmall {
       width: 70px;
+    }
+
+    &__itemBig {
+      max-width: 175px;
+      text-align: center;
+
+      input {
+        background-color: transparent;
+        color: #fff;
+        border: none;
+        text-align: center;
+        font-size: 15px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      input::-webkit-calendar-picker-indicator {
+        width: 100%;
+        position: absolute;
+        cursor: pointer;
+        opacity: 0;
+      }
     }
 
     &__input:focus {
@@ -107,11 +132,34 @@
   }
 }
 
+.tableWrapper::-webkit-scrollbar {
+  background: none;
+  width: 10px;
+  height: 10px;
+}
+
+.tableWrapper::-webkit-scrollbar-track {
+  background: none;
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border: 0px solid rgba(24, 24, 24, 0.795);
+  border-radius: 8px;
+}
+
 .table__delete {
   cursor: pointer;
 }
 
-.addData {
+.buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button {
   background-color: #fff;
   border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -123,6 +171,6 @@
   align-self: flex-start;
   height: 40px;
   width: 120px;
-  margin-left: 20px;
+  margin: 0 20px;
   cursor: pointer;
 }

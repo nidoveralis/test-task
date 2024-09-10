@@ -1,12 +1,12 @@
 import { createSlice, Draft, PayloadAction } from "@reduxjs/toolkit";
+import { IUserData } from "../../../../types";
 
-const initialState: any = {
-  data: JSON.parse(localStorage.getItem("userData") as string) || {},
+const initialState: IUserData = {
   token: (localStorage.getItem("token") as string) || {},
   error: false,
   inputValue: {
     login: null,
-    passwor: null
+    password: null
   }
 };
 
@@ -14,14 +14,14 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    reducerInputValue: (state: Draft<any>, action: PayloadAction<any>) => {
+    reducerInputValue: (state: Draft<IUserData>, action: PayloadAction<{ login: string | null; password: string | null }>) => {
       state.inputValue = action.payload;
     },
-    reducerGetUser: (state: Draft<any>, action: PayloadAction<any>) => {
-      state.data = action.payload;
-      localStorage.setItem("token", action.payload.data.token);
+    reducerGetUser: (state: Draft<{token: string | {}}>, action: PayloadAction<string>) => {
+      state.token = action.payload;
+      localStorage.setItem("token", action.payload);
     },
-    reducerErrors: (state: Draft<any>, action: PayloadAction<any>) => {
+    reducerErrors: (state: Draft<{error: boolean}>, action: PayloadAction<boolean>) => {
       state.error = action.payload;
     },
   },

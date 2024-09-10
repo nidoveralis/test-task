@@ -7,19 +7,20 @@ import { reducerInputValue, reducerErrors } from "../../redux/reducer/user/reduc
 import { AppDispatch } from "../../redux/reducer/store";
 
 import styles from "./authPage.module.scss";
+import { IUserData } from "../../types";
 
 const AuthPage = () => {
 
   const dispatch = useDispatch<AppDispatch>();
 
-  const { inputValue, error } = useSelector((state: any) => state.user.user);
+  const { inputValue, error } = useSelector((state: { user: { user: IUserData } }) => state.user.user);
   const token = localStorage.getItem('token');
 
   if (token) {
     return <Navigate to='/main' />
   }
 
-  const handleClickOnButton = (e: React.ChangeEvent<HTMLButtonElement>) => {
+  const handleClickOnButton = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (inputValue.login && inputValue.password) {
       dispatch(userLogin(inputValue.login, inputValue.password));
@@ -30,7 +31,7 @@ const AuthPage = () => {
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    dispatch(reducerInputValue({...inputValue, [name]: value}));
+    dispatch(reducerInputValue({ ...inputValue, [name]: value }));
     if (value !== '') {
       dispatch(reducerErrors(false));
     }
@@ -56,7 +57,7 @@ const AuthPage = () => {
           />
           {error && <span className={styles.spanError}>Неверный логин или пароль.</span>}
         </div>
-        <button onClick={(e: any) => handleClickOnButton(e)}>Войти</button>
+        <button onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleClickOnButton(e)}>Войти</button>
       </form>
     </section>
   )

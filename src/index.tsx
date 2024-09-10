@@ -7,7 +7,6 @@ import store from "./redux/reducer/store";
 // import App from './App';
 import './scss/index.scss';
 import AuthPage from "./components/auth/authPage";
-import Page404 from "./components/page404/page404";
 import DataTables from "./components/table/dataTable";
 import PrivateRoute from "./components/privateRoute/privateRoute";
 
@@ -26,7 +25,6 @@ const detectedBasename = window.location.pathname.startsWith("/react")
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login/*" element={<AuthPage />} />
         <Route path="/main/*" element={<PrivateRoute component={<DataTables />} />} />
-        <Route path="/page404/*" element={<Page404 />} />
       </Routes>
     </BrowserRouter>
   </Provider>
