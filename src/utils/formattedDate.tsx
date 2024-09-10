@@ -1,3 +1,5 @@
+export const BASE_URL = 'https://test.v5.pryaniky.com';
+
 export const dataFormated = (data: string) => {
   const date = new Date(data);
 

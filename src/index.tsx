@@ -4,7 +4,6 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 
 import store from "./redux/reducer/store";
-// import App from './App';
 import './scss/index.scss';
 import AuthPage from "./components/auth/authPage";
 import DataTables from "./components/table/dataTable";

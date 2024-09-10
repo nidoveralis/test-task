@@ -3,8 +3,7 @@ import axios from "axios";
 import { AppDispatch } from "../../reducer/store";
 
 import { reducerGetUser, reducerErrors } from "../../reducer/user/reducers/reducerUser";
-
-const BASE_URL = 'https://test.v5.pryaniky.com';
+import { BASE_URL } from "../../../utils/formattedDate";
 
 export const userLogin =
   (username: string, password: string) =>
