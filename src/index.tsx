@@ -13,9 +13,7 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-const detectedBasename = window.location.pathname.startsWith("/react")
-  ? "/react"
-  : "/";
+const detectedBasename = "/";
 
   root.render(
   <Provider store={store}>
